@@ -47,10 +47,7 @@ Dockerfile             # Configuración para Docker
 requirements.txt       # Dependencias de Python
 static/                # CSS/JS (opcional)
 templates/             # Plantillas HTML
-index.html         # Página para mostrar la IP
 ```
-
----
 
 ## 🚀 Instalación y Uso
 
@@ -96,21 +93,7 @@ def main():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8181)
-```
 
-**`templates/index.html`**
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Detector de IP</title>
-</head>
-<body>
-    <h1>Tu dirección IP es: {{ ip_address }}</h1>
-</body>
-</html>
-```
 
 ▶️ **Ejecución:**
 
