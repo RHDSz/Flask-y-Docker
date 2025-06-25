@@ -29,8 +29,7 @@ Este proyecto implementa una aplicación web Flask que detecta y muestra la dire
 | Librería   | Versión | Descripción                          |
 |------------|---------|--------------------------------------|
 | Flask      | 2.0+    | Framework web para Python            |
-| Jinja2     | 3.0+    | Motor de plantillas para HTML        |
-| Werkzeug   | 2.0+    | Servidor WSGI para aplicaciones Flask |
+
 
 # Dependencias (Docker)
 
