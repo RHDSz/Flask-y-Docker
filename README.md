@@ -1,10 +1,4 @@
-# 🐳 Aplicación Flask en Docker
-
-🔹 **Versión:** 1.0  
-🔹 **Autor:** [Tu Nombre]  
-🔹 **Repositorio:** [Enlace a GitHub]
-
----
+Aplicación Flask en Docker
 
 ## 📌 Descripción del Proyecto
 
