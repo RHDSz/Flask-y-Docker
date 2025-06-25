@@ -1,43 +1,65 @@
-README - Aplicación Flask en Docker 🐳
-🔹 Versión: 1.0
-🔹 Autor: [Tu Nombre]
-🔹 Repositorio: [Enlace a GitHub]
+# 🐳 Aplicación Flask en Docker
 
-📌 Descripción del Proyecto
-Este proyecto implementa una aplicación web Flask que detecta y muestra la dirección IP del cliente en diferentes versiones (puertos 8000, 8181 y 8888), cada una con mejoras progresivas. La aplicación se ejecuta dentro de un contenedor Docker para facilitar su despliegue.
+🔹 **Versión:** 1.0  
+🔹 **Autor:** [Tu Nombre]  
+🔹 **Repositorio:** [Enlace a GitHub]
 
-🚀 Características principales
-✅ 3 versiones de la aplicación (básica, con HTML y Dockerizada).
-✅ Detección automática de IP del cliente.
-✅ Plantilla HTML para una mejor visualización.
-✅ Configuración optimizada para Docker.
-✅ Fácil despliegue con un solo comando.
+---
 
-⚙️ Requisitos Previos
-📦 Dependencias (Python)
-Librería	Versión	Descripción
-Flask	2.0+	Framework web para Python
-Jinja2	3.0+	Motor de plantillas para HTML
-Werkzeug	2.0+	Servidor WSGI para Flask
-🐋 Dependencias (Docker)
-Docker Engine 20.10+
+## 📌 Descripción del Proyecto
 
-Docker Compose (opcional)
+Este proyecto implementa una aplicación web Flask que detecta y muestra la dirección IP del cliente en diferentes versiones (puertos 8000, 8181 y 8888), cada una con mejoras progresivas. La aplicación se ejecuta dentro de un contenedor Docker para facilitar su despliegue y portabilidad.
 
-📂 Estructura del Proyecto
-text
+---
+
+## 🚀 Características Principales
+
+✅ 3 versiones de la aplicación (básica, con HTML y Dockerizada)  
+✅ Detección automática de IP del cliente  
+✅ Plantilla HTML para una mejor visualización  
+✅ Configuración optimizada para Docker  
+✅ Fácil despliegue con un solo comando
+
+---
+
+## ⚙️ Requisitos Previos
+
+### 📦 Dependencias (Python)
+
+| Librería   | Versión | Descripción                          |
+|------------|---------|--------------------------------------|
+| Flask      | 2.0+    | Framework web para Python            |
+| Jinja2     | 3.0+    | Motor de plantillas para HTML        |
+| Werkzeug   | 2.0+    | Servidor WSGI para aplicaciones Flask |
+
+# Dependencias (Docker)
+
+- Docker Engine 20.10+  
+- Docker Compose (opcional)
+
+---
+
+## 📂 Estructura del Proyecto
+
+```
 flask-ip-docker/
-├── sample_app.py          # Código principal (modificado en cada paso)
-├── Dockerfile             # Configuración para Docker
-├── requirements.txt       # Dependencias de Python
-├── static/                # CSS/JS (opcional)
-└── templates/             # Plantillas HTML
-    └── index.html         # Página para mostrar la IP
-🚀 Instalación y Uso
-1️⃣ Paso 1: Versión Básica (Puerto 8000)
-📜 Código: sample_app.py (versión inicial)
+sample_app.py          # Código principal (modificado en cada paso)
+Dockerfile             # Configuración para Docker
+requirements.txt       # Dependencias de Python
+static/                # CSS/JS (opcional)
+templates/             # Plantillas HTML
+index.html         # Página para mostrar la IP
+```
 
-python
+---
+
+## 🚀 Instalación y Uso
+
+### 1️⃣ Paso 1: Versión Básica (Puerto 8000)
+
+**`sample_app.py`**
+
+```python
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -48,16 +70,23 @@ def main():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8000)
-▶️ Ejecución:
+```
 
-bash
+▶️ **Ejecución:**
+
+```bash
 python3 sample_app.py
-🔹 Acceso: http://localhost:8000
+```
 
-2️⃣ Paso 2: Versión con HTML (Puerto 8181)
-📜 Código: sample_app.py (modificado)
+🔹 Acceso: [http://localhost:8000](http://localhost:8000)
 
-python
+---
+
+### 2️⃣ Paso 2: Versión con HTML (Puerto 8181)
+
+**`sample_app.py`**
+
+```python
 from flask import Flask, request, render_template
 
 app = Flask(__name__)
@@ -68,9 +97,11 @@ def main():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8181)
-📄 Plantilla (templates/index.html):
+```
 
-html
+**`templates/index.html`**
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,16 +111,23 @@ html
     <h1>Tu dirección IP es: {{ ip_address }}</h1>
 </body>
 </html>
-▶️ Ejecución:
+```
 
-bash
+▶️ **Ejecución:**
+
+```bash
 python3 sample_app.py
-🔹 Acceso: http://localhost:8181
+```
 
-3️⃣ Paso 3: Versión Dockerizada (Puerto 8888)
-📜 Código: sample_app.py (versión final)
+🔹 Acceso: [http://localhost:8181](http://localhost:8181)
 
-python
+---
+
+### 3️⃣ Paso 3: Versión Dockerizada (Puerto 8888)
+
+**`sample_app.py`**
+
+```python
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -101,9 +139,11 @@ def home():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8888)
-🐋 Dockerfile:
+```
 
-dockerfile
+**`Dockerfile`**
+
+```dockerfile
 FROM python:3.10-slim
 
 ENV PIP_NO_PROGRESS_BAR=off
@@ -117,27 +157,36 @@ COPY sample_app.py /home/myapp/
 EXPOSE 8888
 
 CMD ["python3", "/home/myapp/sample_app.py"]
-▶️ Construir y Ejecutar:
+```
 
-bash
+▶️ **Construcción y ejecución:**
+
+```bash
 docker build -t flask-ip-app .
 docker run -p 8888:8888 flask-ip-app
-🔹 Acceso: http://localhost:8888
+```
 
-📌 Comandos Útiles
-Comando	Descripción
-docker ps	Ver contenedores en ejecución
-docker stop <ID>	Detener un contenedor
-docker rm <ID>	Eliminar un contenedor
-docker rmi flask-ip-app	Eliminar la imagen
-📜 Licencia
-Este proyecto está bajo la licencia MIT.
+🔹 Acceso: [http://localhost:8888](http://localhost:8888)
 
-📌 Contribuciones
-¡Las contribuciones son bienvenidas! 🎉
-🔹 Reportar bugs → [Issues]
-🔹 Enviar mejoras → [Pull Requests]
+---
 
-📧 Contacto
-✉️ Correo: [tu@email.com]
-🌐 GitHub: [@tuusuario]
+## 📌 Comandos Útiles
+
+| Comando                   | Descripción                       |
+|--------------------------|-----------------------------------|
+| `docker ps`              | Ver contenedores en ejecución     |
+| `docker stop <ID>`       | Detener un contenedor             |
+| `docker rm <ID>`         | Eliminar un contenedor            |
+| `docker rmi flask-ip-app`| Eliminar la imagen creada         |
+
+---
+
+## 📜 Licencia
+
+Este proyecto está bajo la licencia **MIT**.
+
+---
+
+## 📧 Contacto
+
+✉️ Correo: [fcer14.2002@gmail.com]
